@@ -10,6 +10,11 @@ import main.square.SquareType;
 import main.board.*;
 import main.pieces.*;
 
+/**
+ * Classe représentant le jeu
+ * @author Sogolon88
+ * @version 1.0
+ */
 public class Game {
     private String turn;
     private SquareType winner;
@@ -17,6 +22,10 @@ public class Game {
     private Board boardSquares;
     private Pieces pieces;
 
+    /**
+     * Initialise le jeu
+     * @author Sogolon88
+     */
     public Game() {
         turn = "WHITE";
         winner = null;
@@ -25,6 +34,10 @@ public class Game {
         scanner = new Scanner(System.in);
     }
 
+    /**
+     * Démarre le jeu
+     * @author Sogolon88
+     */
     public void run() {
         int nb_turns = 0;
         while(!isGameOver()) {   
@@ -44,6 +57,12 @@ public class Game {
         System.out.println("VICTOIRE DES " + winner.toString().toUpperCase() + " !");
     }
 
+    /**
+     * Vérifie si le mouvement est légal ou non
+     * @param playerMove le mouvement du joueur
+     * @return true s'il est légal, false sinon
+     * @author Sogolon88
+     */
     public boolean validateMove(List<Square> playerMove) {
 
         if (playerMove == null || playerMove.size() != 2)
@@ -73,7 +92,11 @@ public class Game {
         return false;
     }
 
-
+    /**
+     * Modifie le plateau en validant l'action
+     * @param playerMove le mouvement du joueur
+     * @author Sogolon88
+     */
     public void makeMove(List<Square> playerMove) {
         Square fromSquare = playerMove.get(0);
         Square toSquare = playerMove.get(1);
@@ -95,6 +118,11 @@ public class Game {
         
     }
 
+    /**
+     * getter du mouvement du joueur
+     * @return la case du mouvement
+     * @author Sogolon88
+     */
     private List<Square> getPlayerMove() {
         List<Square> playerMove = new ArrayList<>();
         System.out.print("Entrez votre mouvement (ex: a2 a3) : ");
@@ -120,6 +148,11 @@ public class Game {
         return playerMove;
     }
 
+    /**
+     * Vérifie si la partie est finie
+     * @return true si la partie est finie, false sinon
+     * @author Sogolon88
+     */
     private boolean isGameOver() {
         if(pieces.getNbBlackPieces() == 0 || pieces.getNbWhitePieces() == 0)
             return true;
@@ -139,18 +172,38 @@ public class Game {
         return false;
     }
 
+    /**
+     * getter du tour actuel
+     * @return 
+     * @author Sogolon88
+     */
     public String getTurn() {
         return turn;
     }
 
+    /**
+     * setter du tour actuel
+     * @return 
+     * @author Sogolon88
+     */
     public void setTurn(String turn) {
         this.turn = turn;
     }
 
+    /**
+     * getter du gagnant
+     * @return
+     * @author Sogolon88
+     */
     public SquareType getWinner() {
         return winner;
     }
 
+    /**
+     * setter du gagnant
+     * @return
+     * @author Sogolon88
+     */
     public void setWinner(SquareType winner) {
         this.winner = winner;
     }

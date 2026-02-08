@@ -5,12 +5,24 @@ import java.util.List;
 
 import main.square.*;
 
+/**
+ * Classe représentant le plateau du jeu
+ * @author Sogolon88
+ * @version 1.0
+ */
 public class Board {
-
+    /** Nombre de lignes */
     private final int ROW = 8;
+    /** Nombre de colonnes */
     private final int COL = 8;
+    /** Plateau de jeu */
     private List<Square> boardSquares;
 
+    /**
+     * Crée un plateau
+     * @author Sogolon88
+     * @version 1.0
+     */
     public Board(){
         this.boardSquares = new ArrayList<Square>();
         initializeBoard();
@@ -35,10 +47,19 @@ public class Board {
         }
     }
 
+    /**
+     * Retourne le plateau
+     * @return le plateau vide
+     * @author Sogolon88
+     */
     public List<Square> getBoard() {
         return this.boardSquares;
     }
 
+    /**
+     * Affiche le plateau
+     * @author Sogolon88
+     */
     public void printBoard() {
 
         System.out.println("\n    a     b     c     d     e     f     g     h   \n");
@@ -69,21 +90,47 @@ public class Board {
         System.out.println("\n    a     b     c     d     e     f     g     h   \n");
     }
 
+    /**
+     * Retourne la case à l'indice index
+     * @param index
+     * @return la case
+     * @author Sogolon88
+     */
     public Square get(int index){
         return boardSquares.get(index);
     }
+    
+    /**
+     * Retourne le nombre de lignes
+     * @return le nombre de lignes
+     * @author Sogolon88
+     */
     public int getRow() {
         return ROW;
     }
 
+    /**
+     * Retourne le nombre de colonnes
+     * @return le nombre de colonnes
+     * @author Sogolon88
+     */
     public int getCol() {
         return COL;
     }
 
+    /**
+     * Retourne le plateau de jeu
+     * @return le plateau de jeu
+     * @author Sogolon88
+     */
     public List<Square> getboardSquares() {
         return boardSquares;
     }
 
+    /**
+     * Setter du plateau de jeu
+     * @param boardSquares le plateau de jeu
+     */
     public void setboardSquares(List<Square> boardSquares) {
         this.boardSquares = boardSquares;
     }
