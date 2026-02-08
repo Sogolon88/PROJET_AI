@@ -1,7 +1,6 @@
-package test;
+package main;
 
-import main.CaseType;
-import main.Game;
+import main.game.Game;
 
 public class AppMain {
     public static void main(String[] args) {

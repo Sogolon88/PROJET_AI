@@ -1,23 +1,23 @@
-package main;
+package main.square;
 
-public class Case{
+public class Square{
     private int x;
     private int y;
-    private CaseType type;
+    private SquareType type;
     private boolean canMove;
 
-    public Case(int x, int y, CaseType type) {
+    public Square(int x, int y, SquareType type) {
         this.x = x;
         this.y = y;
         this.type = type;
         this.canMove = false;
     }
 
-    public void setType(CaseType type) {
+    public void setType(SquareType type) {
         this.type = type;
     }
 
-    public CaseType getType() {
+    public SquareType getType() {
         return type;
     }
 
