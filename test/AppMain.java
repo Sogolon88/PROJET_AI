@@ -1,6 +1,5 @@
 package test;
 
-import main.CaseType;
 import main.Game;
 
 public class AppMain {

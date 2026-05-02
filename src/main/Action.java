@@ -1,19 +1,19 @@
 package main;
 
-public class Move {
+public class Action {
     private Case fromCase;
     private Case toCase;
 
-    public Move(Case fromCase, Case toCase) {
+    public Action(Case fromCase, Case toCase) {
         this.fromCase = fromCase;
         this.toCase = toCase;
     }
 
-    
+
 
     public Case getFromCase() {
-        return fromCase;
-    }
+            return fromCase;
+        }
     public Case getToCase() {
         return toCase;
     }
@@ -24,4 +24,14 @@ public class Move {
         this.toCase = toCase;
     }
     
+    @Override
+    public boolean equals(Object ob){
+        if (ob == null)
+            return false;
+        else {
+            Action act = (Action)ob;
+            return act.getToCase().equals(toCase) &&
+            act.getFromCase().equals(fromCase);
+        }
+    }
 }

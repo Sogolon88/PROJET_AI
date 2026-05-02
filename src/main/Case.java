@@ -34,4 +34,19 @@ public class Case{
     public int getY() {
         return y;
     }
+
+    @Override
+    public String toString(){
+        return "("+ x + " " +y +")";
+    }
+
+    @Override
+    public boolean equals(Object ob){
+        if(ob == null)
+            return false;
+        else{
+            Case c = (Case)ob;
+            return c.getX() == x && c.getX() == y;
+        }
+    }
 }
