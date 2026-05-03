@@ -3,7 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import algorithmes.MiniMax;
+import src.algorithmes.MiniMax;
 
 public class Game {
     static final int ROW = 8;
@@ -55,7 +55,7 @@ public List<Case> initializeBoard() {
 }
 
 
-    public void run() {
+    public void runAI() {
             int nb_turns = 0;
             while(!isGameOver(this.bordCases)) {   
             System.out.println(this);
@@ -64,17 +64,22 @@ public List<Case> initializeBoard() {
 
             switch (turn) {
                 case "BLACK":
-                    playerMove = MiniMax.run(this.bordCases);
-                    System.out.println(playerMove.getFromCase()+ " "+ playerMove.getToCase());
-                    break;
-                
                 case "WHITE":
-                    playerMove = getPlayerMove();
+                    Action aiMove = MiniMax.run(bordCases, turn);
+                    if (aiMove != null) {
+                        int fromIdx = aiMove.getFromCase().getX() * COL + aiMove.getFromCase().getY();
+                        int toIdx   = aiMove.getToCase().getX()   * COL + aiMove.getToCase().getY();
+                        playerMove  = new Action(bordCases.get(fromIdx), bordCases.get(toIdx));
+                        System.out.println(turn + " (IA) joue : "
+                            + toNotation(playerMove.getFromCase())
+                            + " -> "
+                            + toNotation(playerMove.getToCase()));
+                    }
                     break;
                 default:
                 break;
             }
-            
+
             if (validateMove(playerMove)){
                 makeMove( playerMove );
                 nb_turns++;
@@ -157,7 +162,6 @@ public List<Case> initializeBoard() {
         Case dt   = playerMove.getToCase();
 
         if(sc.getType() != CaseType.valueOf(turn.trim())){
-            System.out.println("`\n1");
             return false;
         }
 
@@ -167,18 +171,14 @@ public List<Case> initializeBoard() {
         int forward = (turn.equals("WHITE")) ? -1 : 1;
 
         if (dx != forward){
-            System.out.println("\n 2");
             return false;
         }
 
         if (dy == 0){
-            System.out.println("3");
             return dt.getType() == CaseType.EMPTY;
         }
-            
 
         if (dy == 1){
-            System.err.println("4");
             return dt.getType() != CaseType.EMPTY &&
                 dt.getType() != sc.getType();
         }
@@ -266,6 +266,16 @@ public List<Case> initializeBoard() {
             }
         }
 
+        // Un joueur n'a plus aucun coup possible malgré ses pions → il perd
+        if (getActions(stat, "BLACK").isEmpty()) {
+            winner = CaseType.WHITE;
+            return true;
+        }
+        if (getActions(stat, "WHITE").isEmpty()) {
+            winner = CaseType.BLACK;
+            return true;
+        }
+
         return false;
     }
 
@@ -307,6 +317,16 @@ public List<Case> initializeBoard() {
         return sb.toString();
     }
 
+
+    /**
+     * Convertit une Case en notation lisible type "a1", "b3"...
+     * Les colonnes sont a-h (y=0→a), les lignes sont 1-8 (x=0→1)
+     */
+    public static String toNotation(Case c) {
+        char col = (char) ('a' + c.getY());
+        int row = c.getX() + 1;
+        return "" + col + row;
+    }
 
     public static int getRow() {
         return ROW;
