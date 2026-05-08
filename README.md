@@ -115,5 +115,5 @@ java -cp ./bin tournoi_ai.Tournoi
 
 Projet réalisé par un binôme de L3 :
 
-- Jordan Crisosto
 - Laye Fodé Keita
+- Jordan Crisosto
