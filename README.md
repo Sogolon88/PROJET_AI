@@ -53,8 +53,8 @@ PROJET_AI/
 ## Comment Exécuter
 
 Depuis dans le dossier `Projet_IA`
-1. Exécutez la commande : `javac -d ./bin .\src\main\*.java .\test\AppMain.java`
-2. Puis la commande : `java -cp ./bin .\test\AppMain.java`
+1. Exécutez la commande pour compiler : `javac -d ./bin -sourcepath src src/main/AppMain.java`
+2. Puis executer : `java -cp ./bin main.AppMain`
 
 
 ## binôme du Projet

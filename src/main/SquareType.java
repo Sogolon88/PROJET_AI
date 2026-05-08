@@ -1,5 +1,5 @@
 package main;
-public enum CaseType {
+public enum SquareType {
     EMPTY,
     BLACK,
     WHITE
