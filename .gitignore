@@ -1,0 +1,12 @@
+# Rapport (ne pas versionner)
+rapport/
+
+# Fichiers compilés Java
+bin/
+
+# JAR généré
+*.jar
+
+# Fichiers temporaires
+*.class
+*.log

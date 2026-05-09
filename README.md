@@ -75,7 +75,6 @@ PROJET_AI/
 │       ├── Tournoi.java               # Gestion du tournoi IA vs IA
 │       └── IAConfig.java              # Configuration d’une IA (profondeur + fonction d’évaluation)
 ├── test/
-│   ├── AppMain.java                   # Lancement des tests
 │   ├── BoardTest.java                 # Tests du plateau
 │   ├── PiecesTest.java                # Tests des pièces
 │   ├── SquareTest.java                # Tests des cases
@@ -117,3 +116,18 @@ Projet réalisé par un binôme de L3 :
 
 - Laye Fodé Keita
 - Jordan Crisosto
+## Lancer les tests unitaires
+
+Depuis le dossier `PROJET_AI` :
+
+1. Compiler les sources et les tests :
+```bash
+javac -d ./bin -cp "./lib/*" -sourcepath "src;test" src/main/AppMain.java test/*.java
+```
+
+2. Exécuter les tests JUnit :
+```bash
+java -cp "./bin;./lib/*" org.junit.platform.console.ConsoleLauncher execute --select-package test
+```
+
+Les tests couvrent 5 classes (`BoardTest`, `SquareTest`, `PiecesTest`, `moveTest`, `gameTest`) pour un total de 35 tests vérifiant l'initialisation du plateau, la validation des coups légaux et illégaux, et la détection des fins de partie.
